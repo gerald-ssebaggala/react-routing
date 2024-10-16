@@ -11,8 +11,22 @@ export const router = createBrowserRouter([
     element: <NavLayout />,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Posts /> },
-      { path: "/users", element: <Users /> },
+      {
+        path: "/posts",
+        element: <Posts />,
+        loader: ({ request: { signal } }) => {
+          return fetch("https://jsonplaceholder.typicode.com/posts", {
+            signal,
+          });
+        },
+      },
+      {
+        path: "/users",
+        element: <Users />,
+        loader: ({request: {signal}}) => {
+          return fetch("https://jsonplaceholder.typicode.com/users", {signal});
+        },
+      },
       { path: "/todos", element: <Todos /> },
     ],
   },
