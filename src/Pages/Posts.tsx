@@ -9,7 +9,8 @@ interface Post {
 }
 
 export default function Posts() {
-  const postsData: Post[] = useLoaderData();
+  const postsData = useLoaderData() as Post[];
+  console.log(postsData)
 
   const posts = postsData.map((post) => (
     <Post key={post.id} id={post.id} body={post.body} title={post.title} />

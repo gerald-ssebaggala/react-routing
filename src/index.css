@@ -75,6 +75,11 @@ a {
   display: block;
 }
 
+.finished {
+  color: "#213547";
+  text-decoration: line-through;
+}
+
 .view-btn {
   align-self: flex-end;
   border-radius: 8px;

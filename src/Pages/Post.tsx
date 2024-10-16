@@ -15,7 +15,7 @@ export default function Post({ id, title, body }: PostProps) {
       <p className="post-content">
         {body.length <= 190 ? body : `${body.slice(0, 190)}...`}
       </p>
-      <Link to="" className="view-btn">
+      <Link to={`/posts/${id.toString()}`} className="view-btn">
         View
       </Link>
     </div>

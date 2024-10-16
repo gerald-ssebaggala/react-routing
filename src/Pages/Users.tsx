@@ -16,7 +16,8 @@ interface Company {
 }
 
 export default function Users() {
-  const usersData: User[] = useLoaderData();
+  const usersData= useLoaderData() as User[];
+  console.log(usersData)
 
   const allUsers = usersData.map((user) => (
     <User

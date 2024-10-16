@@ -4,6 +4,7 @@ import Posts from "./Pages/Posts";
 import Users from "./Pages/Users";
 import Todos from "./Pages/Todos";
 import NotFound from "./Pages/NotFound";
+import PostView from "./Pages/PostView";
 
 export const router = createBrowserRouter([
   {
@@ -21,13 +22,33 @@ export const router = createBrowserRouter([
         },
       },
       {
-        path: "/users",
-        element: <Users />,
-        loader: ({request: {signal}}) => {
-          return fetch("https://jsonplaceholder.typicode.com/users", {signal});
+        path: "posts/:postId",
+        element: <PostView />,
+        loader: ({ params, request: { signal } }) => {
+          return fetch(
+            `https://jsonplaceholder.typicode.com/posts/${params.postId}`,
+            { signal }
+          );
         },
       },
-      { path: "/todos", element: <Todos /> },
+      {
+        path: "/users",
+        element: <Users />,
+        loader: ({ request: { signal } }) => {
+          return fetch("https://jsonplaceholder.typicode.com/users", {
+            signal,
+          });
+        },
+      },
+      {
+        path: "/todos",
+        element: <Todos />,
+        loader: ({ request: { signal } }) => {
+          return fetch("https://jsonplaceholder.typicode.com/todos", {
+            signal,
+          });
+        },
+      },
     ],
   },
 ]);
